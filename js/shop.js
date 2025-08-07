@@ -56,3 +56,49 @@ const instruments = [
       'Бензиновий генератор GX-25 номінальною потужністю 2,5 кВт забезпечить автономність побутових приладів на дачі або у приватному будинку. Ви зможете одночасно підключити до нього освітлення, холодильник, зарядку телефону, ноутбук та водяний насос.',
   },
 ];
+
+const container = document.querySelector('.js-list');
+const PRODUCT_LS = 'basket';
+
+container.insertAdjacentHTML('beforeend', createMarkup(instruments));
+container.addEventListener('click', handleAdd);
+
+function createMarkup(arr) {
+  return arr
+    .map(
+      ({ id, img, name, price, description }) => `
+  <li data-id="${id}" class="product-card js-product">
+  <img src="${img}" alt="${name}" class="product-img  "/>
+  <h2 class="product-title">${name}</h2>
+  <p class="product-description">${description}</p>
+  <p class="product-price">${price} грн</p>
+  <button class="product-add-btn js-add">Add to busket</button>
+  </li>
+  `
+    )
+    .join('');
+}
+
+function handleAdd(event) {
+  if (!event.target.classList.contains('js-add')) {
+    return;
+  }
+
+  const product = event.target.closest('.js-product');
+  const productId = Number(product.dataset.id);
+  // альтернатива: const productId = +product.dataset.id;
+
+  const currentProduct = instruments.find(({ id }) => id === productId);
+
+  const products = JSON.parse(localStorage.getItem(PRODUCT_LS)) ?? [];
+  const index = products.findIndex(({ id }) => id === productId);
+
+  if (index !== -1) {
+    products[index].qty += 1;
+  } else {
+    currentProduct.qty = 1;
+    products.push(currentProduct);
+  }
+
+  localStorage.setItem(PRODUCT_LS, JSON.stringify(products));
+}
