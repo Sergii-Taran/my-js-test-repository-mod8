@@ -7,9 +7,9 @@ parent.addEventListener('click', () => {
 });
 
 child.addEventListener('click', () => {
-  console.log('Child click handler');
+  // console.log('Child click handler');
 });
 
 descendant.addEventListener('click', () => {
-  console.log('Descendant click handler');
+  // console.log('Descendant click handler');
 });
