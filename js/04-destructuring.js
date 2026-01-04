@@ -50,3 +50,23 @@ function getInfo({
 }
 
 getInfo(product);
+
+// ====================================== //
+
+// Необхідно зрoбити рефакторинг функції calculateHousePerimeter так, щоб вона приймала об'єкт з параметрами будинку, включаючи довжини сторін будинку. Функція повинна розрахувати та повернути периметр будинку.
+
+function calculateHousePerimeter({ sideA, sideB, sideC, sideD }) {
+  const perimeter = sideA + sideB + sideC + sideD;
+  return perimeter;
+}
+
+const house = {
+  sideA: 10,
+  sideB: 15,
+  sideC: 20,
+  sideD: 25,
+};
+
+const perimeter = calculateHousePerimeter(house);
+
+console.log(`Perimeter of the house: ${perimeter} meters`);
