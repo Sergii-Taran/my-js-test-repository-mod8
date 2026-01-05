@@ -46,7 +46,7 @@ function getInfo({
   console.log('Details:');
   console.log(`- brand: ${brand}`);
   console.log(`- color: ${color}`);
-  console.log(`- weigth: ${weigth}`);
+  console.log(`- weigth: ${weigth} kg`);
 }
 
 getInfo(product);
