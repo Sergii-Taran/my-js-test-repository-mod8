@@ -177,4 +177,29 @@ for (let i = 0; i < 100; i++) {
 // ======= task-03 ======= //
 // ======================= //
 // ======= task-04 ======= //
+
+// Використовуй шаблон розмітки з файлу html та напиши наступний функціонал:
+// При кліку на кнопку "Зменшити" квадрат стає меньшим на 20 пікселів,
+// При кліку на кнопку "Збільшити" - квадрат стає більшим на 20 пікселів.
+
+const box = document.querySelector('.box');
+const decreaseBtn = document.querySelector('.js-decrease');
+const increaseBtn = document.querySelector('.js-increase');
+
+let size = box.offsetWidth;
+
+decreaseBtn.addEventListener('click', () => {
+  if (size <= 20) return;
+
+  size -= 20;
+  box.style.width = `${size}px`;
+  box.style.height = `${size}px`;
+});
+
+increaseBtn.addEventListener('click', () => {
+  size += 20;
+  box.style.width = `${size}px`;
+  box.style.height = `${size}px`;
+});
+
 // ======================= //
