@@ -29,7 +29,7 @@ function handleInput(event) {
 }
 
 // - Отримуємо значення зі сховища
-// - Якщо там щось бeло, оновлюємо DOM
+// - Якщо там щось було, оновлюємо DOM
 
 function populateTextArea() {
   const savedMessage = localStorage.getItem(STORAGE_KEY);
